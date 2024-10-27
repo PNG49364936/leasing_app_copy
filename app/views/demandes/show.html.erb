@@ -1,0 +1,152 @@
+<div class="card mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3>Demande <%= @demande.reference_demande %></h3>
+    <div>
+      <%= link_to "Modifier", edit_demande_path(@demande), class: "btn btn-warning" %>
+      <%= link_to "Retour", demandes_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+
+  <% if @demande.demande_response.present? %>
+  <div class="card mt-3">
+    <div class="card-header">
+      <h4>Réponse API</h4>
+    </div>
+    <div class="card-body">
+      <p><strong>Numéro de demande:</strong> <%= @demande.demande_response.numero_demande %></p>
+      <p><strong>Message:</strong> <%= @demande.demande_response.message %></p>
+      <p><strong>Code:</strong> <%= @demande.demande_response.code %></p>
+      <tr>
+  <th>Banque:</th>
+  <td><%= @demande.banque.titleize %></td>
+</tr>
+    </div>
+  </div>
+<% end %>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Informations Générales</h4>
+        <table class="table">
+          <tr>
+            <th>Media:</th>
+            <td><%= @demande.media %></td>
+          </tr>
+          <tr>
+            <th>Vendeur:</th>
+            <td><%= @demande.login_vendeur %></td>
+          </tr>
+          <tr>
+            <th>Référence:</th>
+            <td><%= @demande.reference_demande %></td>
+          </tr>
+          <tr>
+            <th>Montant:</th>
+            <td><%= @demande.montant %> €</td>
+          </tr>
+          <tr>
+            <th>Durée:</th>
+            <td><%= @demande.duree %></td>
+          </tr>
+          <tr>
+            <th>Nature:</th>
+            <td><%= @demande.nature %></td>
+          </tr>
+          <tr>
+            <th>SIREN:</th>
+            <td><%= @demande.numero_siren %></td>
+          </tr>
+        </table>
+      </div>
+
+      <% if @demande.bloc_plan_financement.present? %>
+        <div class="col-md-6">
+          <h4>Plan de Financement</h4>
+          <table class="table">
+            <tr>
+              <th>Premier Loyer:</th>
+              <td><%= @demande.bloc_plan_financement.premier_loyer %></td>
+            </tr>
+            <tr>
+              <th>Code Amortissement:</th>
+              <td><%= @demande.bloc_plan_financement.code_amortissement %></td>
+            </tr>
+            <tr>
+              <th>VR:</th>
+              <td><%= @demande.bloc_plan_financement.vr %></td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row mt-4">
+      <% if @demande.bloc_materiel.present? %>
+        <div class="col-md-6">
+          <h4>Matériel</h4>
+          <table class="table">
+            <tr>
+              <th>Code INSEE:</th>
+              <td><%= @demande.bloc_materiel.code_insee_materiel %></td>
+            </tr>
+            <tr>
+              <th>Occasion:</th>
+              <td><%= @demande.bloc_materiel.materiel_occasion ? "Oui" : "Non" %></td>
+            </tr>
+            <tr>
+              <th>Année:</th>
+              <td><%= @demande.bloc_materiel.annee_materiel %></td>
+            </tr>
+            <tr>
+              <th>Niveau Utilisation:</th>
+              <td><%= @demande.bloc_materiel.code_niveau_utilisation_materiel %></td>
+            </tr>
+            <tr>
+              <th>Niveau Options:</th>
+              <td><%= @demande.bloc_materiel.code_niveau_options_materiel %></td>
+            </tr>
+            <tr>
+              <th>Nombre:</th>
+              <td><%= @demande.bloc_materiel.nombre_materiel %></td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+
+      <% if @demande.bloc_dirigeant.present? %>
+        <div class="col-md-6">
+          <h4>Dirigeant</h4>
+          <table class="table">
+            <tr>
+              <th>Nom de naissance:</th>
+              <td><%= @demande.bloc_dirigeant.nom_naissance %></td>
+            </tr>
+            <tr>
+              <th>Prénom:</th>
+              <td><%= @demande.bloc_dirigeant.prenom %></td>
+            </tr>
+            <tr>
+              <th>Nom usuel:</th>
+              <td><%= @demande.bloc_dirigeant.nom_usuel %></td>
+            </tr>
+            <tr>
+              <th>Date de naissance:</th>
+              <td><%= @demande.bloc_dirigeant&.date_naissance&.strftime("%d/%m/%Y") %></td>
+          </tr>
+          </table>
+        </div>
+      <% end %>
+
+      <div class="card-footer">
+  <%= link_to "Retour", demandes_path, class: "btn btn-secondary" %>
+  <%= link_to "Modifier", edit_demande_path(@demande), class: "btn btn-warning" %>
+  <%= button_to "Soumettre à l'API", 
+                submit_to_api_demande_path(@demande), 
+                class: "btn btn-success",
+                data: { confirm: "Êtes-vous sûr de vouloir soumettre cette demande ?" } %>
+</div>
+    </div>
+  </div>
+</div>

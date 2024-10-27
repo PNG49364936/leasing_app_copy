@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero_demande: MyString
+  message: MyString
+  code: 1
+  demande: one
+
+two:
+  numero_demande: MyString
+  message: MyString
+  code: 1
+  demande: two

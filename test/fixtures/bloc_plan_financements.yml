@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  premier_loyer: MyString
+  code_amortissement: MyString
+  vr: MyString
+  demande: one
+
+two:
+  premier_loyer: MyString
+  code_amortissement: MyString
+  vr: MyString
+  demande: two

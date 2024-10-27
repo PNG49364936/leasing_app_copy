@@ -1,0 +1,181 @@
+<%= form_with(model: demande, local: true, class: "mb-4") do |f| %>
+  <% if demande.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(demande.errors.count, "erreur") %> empêche(nt) la sauvegarde :</h4>
+      <ul>
+        <% demande.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Informations Générales -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h4>Informations Générales</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= f.label :media, class: "form-label" %>
+            <%= f.text_field :media, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+  <%= f.label :banque, "Banque", class: "form-label" %>
+  <%= f.select :banque, 
+              Demande.banque_options, 
+              { }, 
+              { class: "form-select" } %>
+</div>
+
+          <div class="mb-3">
+            <%= f.label :login_vendeur, "Login Vendeur", class: "form-label" %>
+            <%= f.text_field :login_vendeur, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :reference_demande, "Référence", class: "form-label" %>
+            <%= f.text_field :reference_demande, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= f.label :duree, "Durée", class: "form-label" %>
+            <%= f.text_field :duree, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :montant, class: "form-label" %>
+            <%= f.text_field :montant, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :nature, class: "form-label" %>
+            <%= f.text_field :nature, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :numero_siren, "SIREN", class: "form-label" %>
+            <%= f.text_field :numero_siren, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plan de Financement -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h4>Plan de Financement</h4>
+    </div>
+    <div class="card-body">
+      <%= f.fields_for :bloc_plan_financement do |pf| %>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="mb-3">
+              <%= pf.label :premier_loyer, "Premier Loyer", class: "form-label" %>
+              <%= pf.text_field :premier_loyer, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <%= pf.label :code_amortissement, "Code Amortissement", class: "form-label" %>
+              <%= pf.text_field :code_amortissement, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <%= pf.label :vr, "VR", class: "form-label" %>
+              <%= pf.text_field :vr, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Matériel -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h4>Matériel</h4>
+    </div>
+    <div class="card-body">
+      <%= f.fields_for :bloc_materiel do |mat| %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <%= mat.label :code_insee_materiel, "Code INSEE", class: "form-label" %>
+              <%= mat.text_field :code_insee_materiel, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= mat.label :materiel_occasion, "Occasion", class: "form-label" %>
+              <%= mat.check_box :materiel_occasion, class: "form-check-input" %>
+            </div>
+            <div class="mb-3">
+              <%= mat.label :annee_materiel, "Année", class: "form-label" %>
+              <%= mat.text_field :annee_materiel, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <%= mat.label :code_niveau_utilisation_materiel, "Niveau Utilisation", class: "form-label" %>
+              <%= mat.text_field :code_niveau_utilisation_materiel, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= mat.label :code_niveau_options_materiel, "Niveau Options", class: "form-label" %>
+              <%= mat.text_field :code_niveau_options_materiel, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= mat.label :nombre_materiel, "Nombre", class: "form-label" %>
+              <%= mat.number_field :nombre_materiel, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Dirigeant -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h4>Dirigeant</h4>
+    </div>
+    <div class="card-body">
+      <%= f.fields_for :bloc_dirigeant do |dir| %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <%= dir.label :nom_naissance, "Nom de naissance", class: "form-label" %>
+              <%= dir.text_field :nom_naissance, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <%= dir.label :prenom, "Prénom", class: "form-label" %>
+              <%= dir.text_field :prenom, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <%= dir.label :nom_usuel, "Nom usuel", class: "form-label" %>
+              <%= dir.text_field :nom_usuel, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+              <%= dir.label :date_naissance, "Date de naissance", class: "form-label" %>
+              <%= dir.date_field :date_naissance, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <%= f.submit "Sauvegarder", class: "btn btn-primary" %>
+    <%= link_to "Retour", demandes_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

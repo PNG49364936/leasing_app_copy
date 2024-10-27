@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code_insee_materiel: MyString
+  materiel_occasion: false
+  annee_materiel: MyString
+  code_niveau_utilisation_materiel: MyString
+  code_niveau_options_materiel: MyString
+  nombre_materiel: 1
+  demande: one
+
+two:
+  code_insee_materiel: MyString
+  materiel_occasion: false
+  annee_materiel: MyString
+  code_niveau_utilisation_materiel: MyString
+  code_niveau_options_materiel: MyString
+  nombre_materiel: 1
+  demande: two

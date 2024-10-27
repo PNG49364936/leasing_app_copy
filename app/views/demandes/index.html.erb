@@ -1,0 +1,45 @@
+<div class="row mb-4">
+  <div class="col">
+    <h1>Liste des Demandes</h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to "Nouvelle Demande", new_demande_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Référence</th>
+        <th>Media</th>
+        <th>Vendeur</th>
+        <th>Montant</th>
+        <th>Nature</th>
+        <th>Actions</th>
+        <th>Banques</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @demandes.each do |demande| %>
+        <tr>
+          <td><%= demande.reference_demande %></td>
+          <td><%= demande.media %></td>
+          <td><%= demande.login_vendeur %></td>
+          <td><%= number_to_currency(demande.montant, unit: "€") %></td>
+          <td><%= demande.nature %></td>
+          <td>
+            <%= link_to "Voir", demande_path(demande), class: "btn btn-sm btn-info" %>
+            <%= link_to "Modifier", edit_demande_path(demande), class: "btn btn-sm btn-warning" %>
+            <%= button_to "Supprimer", 
+              demande_path(demande), 
+              method: :delete,
+              data: { confirm: "Êtes-vous sûr ?" },
+              class: "btn btn-sm btn-danger" %>
+          </td>
+          <td><%= demande.banque.titleize %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

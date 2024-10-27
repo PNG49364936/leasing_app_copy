@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reference_demande: MyString
+  media: MyString
+  login_vendeur: MyString
+  duree: MyString
+  montant: MyString
+  nature: MyString
+  numero_siren: MyString
+
+two:
+  reference_demande: MyString
+  media: MyString
+  login_vendeur: MyString
+  duree: MyString
+  montant: MyString
+  nature: MyString
+  numero_siren: MyString
