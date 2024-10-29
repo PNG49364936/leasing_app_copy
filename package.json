@@ -6,7 +6,8 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "@rails/activestorage": "^7.2.102",
