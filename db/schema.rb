@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2024_10_25_153323) do
 
-  create_table "bloc_dirigeants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bloc_dirigeants", force: :cascade do |t|
     t.string "nom_naissance"
     t.string "prenom"
     t.string "nom_usuel"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 2024_10_25_153323) do
     t.index ["demande_id"], name: "index_bloc_dirigeants_on_demande_id"
   end
 
-  create_table "bloc_materiels", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "bloc_materiels", force: :cascade do |t|
     t.string "code_insee_materiel"
     t.boolean "materiel_occasion"
     t.string "annee_materiel"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2024_10_25_153323) do
     t.index ["demande_id"], name: "index_bloc_materiels_on_demande_id"
   end
 
-  create_table "bloc_plan_financements", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "bloc_plan_financements", force: :cascade do |t|
     t.string "premier_loyer"
     t.string "code_amortissement"
     t.string "vr"
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 2024_10_25_153323) do
     t.index ["demande_id"], name: "index_bloc_plan_financements_on_demande_id"
   end
 
-  create_table "demande_responses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "demande_responses", force: :cascade do |t|
     t.string "numero_demande"
     t.string "message"
     t.integer "code"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 2024_10_25_153323) do
     t.index ["demande_id"], name: "index_demande_responses_on_demande_id"
   end
 
-  create_table "demandes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "demandes", force: :cascade do |t|
     t.string "reference_demande"
     t.string "media"
     t.string "login_vendeur"

@@ -1,0 +1,10 @@
+LOAD DATABASE
+    FROM mysql://root:ton_password_mysql@localhost/dispr_development
+    INTO postgresql://postgres:password@localhost/dispr_development
+
+    WITH on error resume next, 
+         reset sequences
+
+    CAST type datetime to timestamp,
+         type date to date,
+         type int with extra auto_increment to serial;
