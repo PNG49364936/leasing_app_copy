@@ -6,7 +6,6 @@ require 'uri'
 require 'json'
 require 'base64'
 
-module Services
   class ApiSubmissionService
     def initialize(demande)
       @demande = demande
@@ -105,4 +104,3 @@ module Services
       }
     end
   end
-end

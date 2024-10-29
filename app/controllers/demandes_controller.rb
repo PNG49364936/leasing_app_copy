@@ -51,7 +51,7 @@ class DemandesController < ApplicationController
 
   def submit_to_api
     @demande = Demande.find(params[:id])
-    result = ::Services::ApiSubmissionService.new(@demande).call
+    result = ApiSubmissionService.new(@demande).call
 
     if result[:success]
       redirect_to @demande, notice: result[:message]
