@@ -7,7 +7,7 @@
   "scripts": {
     "webpack": "webpack",
     "build": "webpack --config webpack.config.js",
-    "start": "node app.js"
+    "start": "node app/javascript/channels/index.js"
   },
   "dependencies": {
     "@rails/activestorage": "^7.2.102",
