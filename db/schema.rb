@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_25_153323) do
+ActiveRecord::Schema.define(version: 2024_10_29_210347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2024_10_25_153323) do
     t.string "numero_siren"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "banque", default: "franfinance"
+    t.string "banque", array: true
   end
 
   add_foreign_key "bloc_dirigeants", "demandes"

@@ -18,9 +18,13 @@
       <p><strong>Message:</strong> <%= @demande.demande_response.message %></p>
       <p><strong>Code:</strong> <%= @demande.demande_response.code %></p>
       <tr>
-  <th>Banque:</th>
-  <td><%= @demande.banque.titleize %></td>
-</tr>
+      <th>Banque:</th>
+          <td>
+            <% @demande.banque.each do |banque| %>
+              <%= banque.titleize %><br>
+            <% end %>
+          </td>
+      </tr>
     </div>
   </div>
 <% end %>

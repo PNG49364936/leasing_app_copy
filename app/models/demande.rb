@@ -12,18 +12,39 @@ class Demande < ApplicationRecord
                                 allow_destroy: true
 
   validates :reference_demande, presence: true, uniqueness: true
-  validates :media, presence: true
+  validates :media, presence: true, inclusion: { in: ['WSFL', 'AUTRES'] }
   validates :login_vendeur, presence: true
-
-
   validates :banque, presence: true
-  validates :banque, inclusion: { in: ['franfinance', 'grenke'] }
+  validate :validate_banques
+
+
+
+  BANQUES_DISPONIBLES = ['franfinance', 'grenke', 'bnp', 'siemens'].freeze
 
   # Pour faciliter l'accès aux options de banque dans les vues
   def self.banque_options
     [
       ['Franfinance', 'franfinance'],
-      ['Grenke', 'grenke']
+      ['Grenke', 'grenke'],
+      ['BNP', 'bnp'],
+      ['Siemens', 'siemens']
     ]
+  end
+
+  def self.media_options
+    [
+      ['WSFL', 'WSFL'],
+      ['AUTRES', 'Autres']
+    ]
+  end
+
+  private
+
+  def validate_banques
+    return if banque.blank?
+    invalid_banques = banque - BANQUES_DISPONIBLES
+    if invalid_banques.any?
+      errors.add(:banque, "contient des valeurs invalides : #{invalid_banques.join(', ')}")
+    end
   end
 end

@@ -16,30 +16,39 @@
         <th>Vendeur</th>
         <th>Montant</th>
         <th>Nature</th>
-        <th>Actions</th>
         <th>Banques</th>
+        <th>Etapes</th>
+        <th>Numero de demande</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <% @demandes.each do |demande| %>
-        <tr>
-          <td><%= demande.reference_demande %></td>
-          <td><%= demande.media %></td>
-          <td><%= demande.login_vendeur %></td>
-          <td><%= number_to_currency(demande.montant, unit: "€") %></td>
-          <td><%= demande.nature %></td>
-          <td>
-            <%= link_to "Voir", demande_path(demande), class: "btn btn-sm btn-info" %>
-            <%= link_to "Modifier", edit_demande_path(demande), class: "btn btn-sm btn-warning" %>
-            <%= button_to "Supprimer", 
-              demande_path(demande), 
-              method: :delete,
-              data: { confirm: "Êtes-vous sûr ?" },
-              class: "btn btn-sm btn-danger" %>
-          </td>
-          <td><%= demande.banque.titleize %></td>
-        </tr>
-      <% end %>
+    <% @demandes.each do |demande| %>
+      <tr>
+        <td><%= demande.reference_demande %></td>
+        <td><%= demande.media %></td>
+        <td><%= demande.login_vendeur %></td>
+        <td><%= number_to_currency(demande.montant, unit: "€") %></td>
+        <td><%= demande.nature %></td>
+        <td><%= demande.banque[0].titleize %></td>
+        <% if demande.demande_response.present? %>
+          <td><%= demande.demande_response&.message %></td>
+          <td><%= demande.demande_response&.numero_demande %></td>
+        <% else %>
+          <td> Demande non envoyée </td>
+          <td> - - -</td>
+        <% end %>
+        <td>
+          <%= link_to "Voir", demande_path(demande), class: "btn btn-sm btn-info" %>
+          <%= link_to "Modifier", edit_demande_path(demande), class: "btn btn-sm btn-warning" %>
+          <%= button_to "Supprimer",
+                        demande_path(demande),
+                        method: :delete,
+                        data: { confirm: "Êtes-vous sûr ?" },
+                        class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

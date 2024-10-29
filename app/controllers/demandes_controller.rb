@@ -36,6 +36,7 @@ class DemandesController < ApplicationController
 
   def update
     @demande = Demande.find(params[:id])
+    byebug
     if @demande.update(demande_params)
       redirect_to @demande, notice: 'Demande mise à jour avec succès.'
     else
@@ -63,12 +64,21 @@ class DemandesController < ApplicationController
   private
 
   def demande_params
+    # Ajoutez cette ligne pour debugger
+    puts "Banque params: #{params[:demande][:banque]}"
+
     params.require(:demande).permit(
-      :banque,  :media, :login_vendeur, :reference_demande, :duree,
-      :montant, :nature, :numero_siren,
+      { banque: [] },  # Assurez-vous que c'est bien un tableau
+      :media,
+      :login_vendeur,
+      :reference_demande,
+      :duree,
+      :montant,
+      :nature,
+      :numero_siren,
       bloc_plan_financement_attributes: %i[premier_loyer code_amortissement vr],
       bloc_materiel_attributes: %i[code_insee_materiel materiel_occasion annee_materiel
-                                   code_niveau_utilisation_materiel code_niveau_options_materiel nombre_materiel],
+                                code_niveau_utilisation_materiel code_niveau_options_materiel nombre_materiel],
       bloc_dirigeant_attributes: %i[nom_naissance prenom nom_usuel date_naissance]
     )
   end
