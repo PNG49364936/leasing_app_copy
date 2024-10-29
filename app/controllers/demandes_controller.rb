@@ -36,7 +36,6 @@ class DemandesController < ApplicationController
 
   def update
     @demande = Demande.find(params[:id])
-    byebug
     if @demande.update(demande_params)
       redirect_to @demande, notice: 'Demande mise à jour avec succès.'
     else
