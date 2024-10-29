@@ -7,7 +7,7 @@
   "scripts": {
     "webpack": "webpack",
     "build": "webpack --config webpack.config.js",
-    "start": "node dist/bundle.js"
+    "start": "rails server -p ${PORT:-3000}"
   },
   "dependencies": {
     "@rails/activestorage": "^7.2.102",

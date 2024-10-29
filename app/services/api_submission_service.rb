@@ -50,8 +50,6 @@ module Services
 
 			response_data = JSON.parse(response.body)
 
-			byebug
-
       if response.code.to_i == 201
 				# Sauvegarder la réponse
 				@demande.create_demande_response(
