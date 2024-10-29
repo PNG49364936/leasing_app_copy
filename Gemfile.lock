@@ -81,8 +81,7 @@ GEM
     crass (1.0.6)
     date (3.3.4)
     erubi (1.13.0)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -120,6 +119,8 @@ GEM
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.10-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.5)
     public_suffix (5.1.1)
@@ -222,6 +223,7 @@ GEM
 PLATFORMS
   arm64-darwin-23
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
