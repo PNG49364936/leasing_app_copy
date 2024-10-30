@@ -30,7 +30,12 @@
         <td><%= demande.login_vendeur %></td>
         <td><%= number_to_currency(demande.montant, unit: "€") %></td>
         <td><%= demande.nature %></td>
-        <td><%= demande.banque[0].titleize %></td>
+        <td>
+          <% demande.banque.each do |banque| %>
+            <%= banque.titleize %><br>
+          <% end %>
+        </td>
+
         <% if demande.demande_response.present? %>
           <td><%= demande.demande_response&.message %></td>
           <td><%= demande.demande_response&.numero_demande %></td>
