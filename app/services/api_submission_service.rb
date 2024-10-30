@@ -49,6 +49,8 @@ require 'base64'
 
 			response_data = JSON.parse(response.body)
 
+      byebug
+
       if response.code.to_i == 201
 				# Sauvegarder la réponse
 				@demande.create_demande_response(
@@ -57,7 +59,8 @@ require 'base64'
 					code: response_data["code"]
 				)
 				{ success: true, message: response_data["message"] }
-			else
+      else
+        @demande.create_demande_response(message: JSON.parse(response.body)["message"])
 				{ success: false, message: "Erreur : #{response.body}" }
 			end
     rescue StandardError => e
@@ -77,7 +80,7 @@ require 'base64'
         'loginVendeur' => 'FWSBAIL',
         'referenceDemande' => @demande.reference_demande,
         'demande' => {
-          'duree' => @demande.duree || '26', # valeur par défaut si nil
+          'duree' => (@demande.duree_value.present? ? @demande.duree_en_mois.to_s : '26'), # valeur par défaut si nil
           'montant' => @demande.montant || '5000', # valeur par défaut si nil
           'nature' => 'LF',
           'numeroSiren' => @demande.numero_siren || '326300167', # valeur par défaut si nil

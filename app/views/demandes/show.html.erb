@@ -14,16 +14,13 @@
       <h4>Réponse API</h4>
     </div>
     <div class="card-body">
-      <p><strong>Numéro de demande:</strong> <%= @demande.demande_response.numero_demande %></p>
-      <p><strong>Message:</strong> <%= @demande.demande_response.message %></p>
-      <p><strong>Code:</strong> <%= @demande.demande_response.code %></p>
+      <p><strong>Numéro de demande:</strong> <%= @demande.demande_response.numero_demande || "error" %></p>
+      <p><strong>Message:</strong> <%= @demande.demande_response.message || "error" %></p>
+      <p><strong>Code:</strong> <%= @demande.demande_response.code || "error" %></p>
       <tr>
-      <th>Banque:</th>
-          <td>
-            <% @demande.banque.each do |banque| %>
-              <%= banque.titleize %><br>
-            <% end %>
-          </td>
+      <tr>
+        <th><strong>Demandes effectués aux Banques:</strong></th>
+        <td><%= @demande.banque.map(&:titleize).join(" | ") %></td>
       </tr>
     </div>
   </div>
