@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_29_210347) do
+ActiveRecord::Schema.define(version: 2024_10_30_151826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,13 +63,14 @@ ActiveRecord::Schema.define(version: 2024_10_29_210347) do
     t.string "reference_demande"
     t.string "media"
     t.string "login_vendeur"
-    t.string "duree"
     t.string "montant"
     t.string "nature"
     t.string "numero_siren"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "banque", array: true
+    t.integer "duree_value"
+    t.string "duree_unit", default: "mois"
   end
 
   add_foreign_key "bloc_dirigeants", "demandes"

@@ -23,6 +23,7 @@ class DemandesController < ApplicationController
 
   def create
     @demande = Demande.new(demande_params)
+    byebug
     if @demande.save
       redirect_to @demande, notice: 'Demande créée avec succès.'
     else
@@ -71,7 +72,8 @@ class DemandesController < ApplicationController
       :media,
       :login_vendeur,
       :reference_demande,
-      :duree,
+      :duree_value,
+      :duree_unit,
       :montant,
       :nature,
       :numero_siren,

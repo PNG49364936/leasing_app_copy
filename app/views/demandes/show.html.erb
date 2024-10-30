@@ -50,10 +50,24 @@
             <th>Montant:</th>
             <td><%= @demande.montant %> €</td>
           </tr>
-          <tr>
-            <th>Durée:</th>
-            <td><%= @demande.duree %></td>
-          </tr>
+          <!-- ... -->
+          <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Durée:</div>
+            <div class="col-md-9">
+              <div class="d-flex gap-2 align-items-center">
+      <span class="badge bg-primary">
+        <%= "#{@demande.duree_value} #{@demande.duree_unit}" %>
+      </span>
+                <small class="text-muted">
+                  (équivalent à :
+                  <%= @demande.duree_en_jours %> jours /
+                  <%= @demande.duree_en_mois %> mois /
+                  <%= @demande.duree_en_semestres %> semestres)
+                </small>
+              </div>
+            </div>
+          </div>
+          <!-- ... -->
           <tr>
             <th>Nature:</th>
             <td><%= @demande.nature %></td>

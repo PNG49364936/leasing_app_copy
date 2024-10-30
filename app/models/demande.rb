@@ -16,6 +16,49 @@ class Demande < ApplicationRecord
   validates :login_vendeur, presence: true
   validates :banque, presence: true
   validate :validate_banques
+  validates :duree_unit, presence: true, inclusion: { in: ['jours', 'mois', 'semestres'] }
+
+  DUREE_UNITS = [
+    ['Jours', 'jours'],
+    ['Mois', 'mois'],
+    ['Semestres', 'semestres']
+  ]
+  def duree_en_jours
+    case duree_unit
+    when 'jours'
+      duree_value
+    when 'mois'
+      duree_value * 30
+    when 'semestres'
+      duree_value * 180
+    end
+  end
+  def duree_en_mois
+    case duree_unit
+    when 'jours'
+      (duree_value.to_f / 30).round(2)
+    when 'mois'
+      duree_value
+    when 'semestres'
+      duree_value * 6
+    end
+  end
+
+  def duree_en_semestres
+    case duree_unit
+    when 'jours'
+      (duree_value.to_f / 180).round(2)
+    when 'mois'
+      (duree_value.to_f / 6).round(2)
+    when 'semestres'
+      duree_value
+    end
+  end
+
+  def self.duree_units
+    DUREE_UNITS
+  end
+
 
 
 
