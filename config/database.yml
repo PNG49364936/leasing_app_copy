@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
+  username: puramontero
   password: password
   host: localhost  # ajouté
   variables:       # ajouté
@@ -10,11 +10,11 @@ default: &default
 
 development:
   <<: *default
-  database: dispr_development
+  database: puramontero   
 
 test:
   <<: *default
-  database: dispr_test
+  database: dpuramontero
 
 production:
   <<: *default

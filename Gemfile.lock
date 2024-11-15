@@ -183,7 +183,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
-    spring (3.1.1)
+    spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -223,6 +223,7 @@ GEM
 PLATFORMS
   arm64-darwin-23
   x86_64-darwin-20
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES

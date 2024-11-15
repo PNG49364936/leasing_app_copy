@@ -1,0 +1,20 @@
+2024-11-06 21:29:45.175 CET [13020] LOG:  starting PostgreSQL 14.9 (Homebrew) on x86_64-apple-darwin22.4.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2024-11-06 21:29:45.198 CET [13020] LOG:  listening on IPv6 address "::1", port 5432
+2024-11-06 21:29:45.198 CET [13020] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-11-06 21:29:45.199 CET [13020] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2024-11-06 21:29:45.204 CET [13021] LOG:  database system was shut down at 2024-11-06 21:28:16 CET
+2024-11-06 21:29:45.231 CET [13020] LOG:  database system is ready to accept connections
+2024-11-06 21:30:10.535 CET [13073] FATAL:  role "postgres" does not exist
+2024-11-06 21:30:28.171 CET [13082] FATAL:  role "postgres" does not exist
+2024-11-06 21:50:09.902 CET [13474] FATAL:  database "puramontero" does not exist
+2024-11-06 21:50:57.125 CET [13520] FATAL:  database "puramontero" does not exist
+2024-11-06 21:54:30.852 CET [14126] FATAL:  database "puramontero" does not exist
+2024-11-07 10:54:17.203 CET [17702] FATAL:  role "postgres" does not exist
+2024-11-07 10:54:19.161 CET [17707] FATAL:  role "postgres" does not exist
+2024-11-07 10:56:21.103 CET [17780] FATAL:  role "postgres" does not exist
+2024-11-07 10:58:49.586 CET [17901] FATAL:  database "puramontero" does not exist
+2024-11-07 10:59:09.645 CET [17933] FATAL:  role "inakigauthier" does not exist
+2024-11-07 11:23:47.225 CET [13020] LOG:  received smart shutdown request
+2024-11-07 11:23:47.258 CET [13020] LOG:  background worker "logical replication launcher" (PID 13027) exited with exit code 1
+2024-11-07 11:23:47.258 CET [13022] LOG:  shutting down
+2024-11-07 11:23:47.319 CET [13020] LOG:  database system is shut down
